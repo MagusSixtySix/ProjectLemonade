@@ -13,6 +13,13 @@ namespace ProjectLemonade.Entity.Entities
         private int baseValue;
         private int valueFromCCP;
 
+        public Resource(string name, int baseValue, int valueFromCCP)
+        {
+            Name = name;
+            BaseValue = baseValue;
+            ValueFromCCP = valueFromCCP;
+        }
+
         public string Name { get => name; set => name = value; }
         public int BaseValue { get => baseValue; set => baseValue = value; }
         public int ValueFromCCP { get => valueFromCCP; set => valueFromCCP = value; }

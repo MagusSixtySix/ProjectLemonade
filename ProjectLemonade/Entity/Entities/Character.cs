@@ -15,14 +15,36 @@ namespace ProjectLemonade.Entity.Entities
         private string characterReligion;
         private IPersonality characterPersonality;
         private int characterRace;
-        private int characterClass;// IDs!
+        private int characterClass;
         private int characterOrder;
-        private List<IAttribute> characterAttributes;
+        private List<ICharacterAttribute> characterAttributes;
         private List<IResource> characterResources;
         private List<ICombatStat> characterCombatStats;
         private List<int> characterMasteries;
         private List<int> characterBackgrounds;
         private List<IItem> characterItems;
+
+        public Character(string characterName, int characterLevel, int characterCreationPoints, 
+            string characterReligion, IPersonality characterPersonality, int characterRace,
+            int characterClass, int characterOrder, List<ICharacterAttribute> characterAttributes,
+            List<IResource> characterResources, List<ICombatStat> characterCombatStats,
+            List<int> characterMasteries, List<int> characterBackgrounds, List<IItem> characterItems)
+        {
+            CharacterName = characterName;
+            CharacterLevel = characterLevel;
+            CharacterCreationPoints = characterCreationPoints;
+            CharacterReligion = characterReligion;
+            CharacterPersonality = characterPersonality;
+            CharacterRace = characterRace;
+            CharacterClass = characterClass;
+            CharacterOrder = characterOrder;
+            CharacterAttributes = characterAttributes;
+            CharacterResources = characterResources;
+            CharacterCombatStats = characterCombatStats;
+            CharacterMasteries = characterMasteries;
+            CharacterBackgrounds = characterBackgrounds;
+            CharacterItems = characterItems;
+        }
 
         public string CharacterName { get => characterName; set => characterName = value; }
         public int CharacterLevel { get => characterLevel; set => characterLevel = value; }
@@ -32,7 +54,7 @@ namespace ProjectLemonade.Entity.Entities
         public int CharacterRace { get => characterRace; set => characterRace = value; }
         public int CharacterClass { get => characterClass; set => characterClass = value; }
         public int CharacterOrder { get => characterOrder; set => characterOrder = value; }
-        public List<IAttribute> CharacterAttributes { get => characterAttributes; set => characterAttributes = value; }
+        public List<ICharacterAttribute> CharacterAttributes { get => characterAttributes; set => characterAttributes = value; }
         public List<IResource> CharacterResources { get => characterResources; set => characterResources = value; }
         public List<ICombatStat> CharacterCombatStats { get => characterCombatStats; set => characterCombatStats = value; }
         public List<int> CharacterMasteries { get => characterMasteries; set => characterMasteries = value; }

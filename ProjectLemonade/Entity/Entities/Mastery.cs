@@ -18,7 +18,7 @@ namespace ProjectLemonade.Entity.Entities
         private int difficulity;
         private List<IMastery> strongPrerequisites;
         private List<IMastery> weakPrerequisites;
-        private List<IAttribute> requiredAttributes;
+        private List<ICharacterAttribute> requiredAttributes;
         private int masteryLevel;
         private int iD;
 
@@ -31,7 +31,7 @@ namespace ProjectLemonade.Entity.Entities
         public int Difficulity { get => difficulity; set => difficulity = value; }
         public List<IMastery> StrongPrerequisites { get => strongPrerequisites; set => strongPrerequisites = value; }
         public List<IMastery> WeakPrerequisites { get => weakPrerequisites; set => weakPrerequisites = value; }
-        public List<IAttribute> RequiredAttributes { get => requiredAttributes; set => requiredAttributes = value; }
+        public List<ICharacterAttribute> RequiredAttributes { get => requiredAttributes; set => requiredAttributes = value; }
         public int MasteryLevel { get => masteryLevel; set => masteryLevel = value; }
         public int ID { get => iD; set => iD = value; }
     }

@@ -18,7 +18,7 @@ namespace ProjectLemonade.Interfaces
         int Difficulity { get; set; }
         List<IMastery> StrongPrerequisites { get; set; }
         List<IMastery> WeakPrerequisites { get; set; }
-        List<IAttribute> RequiredAttributes { get; set; }
+        List<ICharacterAttribute> RequiredAttributes { get; set; }
         int MasteryLevel { get; set; }
     }
 }

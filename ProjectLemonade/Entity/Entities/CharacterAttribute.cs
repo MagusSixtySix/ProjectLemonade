@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectLemonade.Entity.Entities
 {
-    internal class Attribute : IAttribute
+    internal class CharacterAttribute : ICharacterAttribute
     {
         private string name;
         private int maxValue;
@@ -15,6 +15,16 @@ namespace ProjectLemonade.Entity.Entities
         private int valueFromCCP;
         private int modifyCurrentValue;
         private int modifyMaxValue;
+
+        public CharacterAttribute(string name, int maxValue, int currentValue, int valueFromCCP, int modifyCurrentValue, int modifyMaxValue)
+        {
+            Name = name;
+            MaxValue = maxValue;
+            CurrentValue = currentValue;
+            ValueFromCCP = valueFromCCP;
+            ModifyCurrentValue = modifyCurrentValue;
+            ModifyMaxValue = modifyMaxValue;
+        }
 
         public string Name { get => name; set => name = value; }
         public int MaxValue { get => maxValue; set => maxValue = value; }

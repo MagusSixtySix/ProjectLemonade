@@ -71,7 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\Entities\Attribute.cs" />
+    <Compile Include="Entity\Entities\CharacterAttribute.cs" />
     <Compile Include="Entity\Entities\Background.cs" />
     <Compile Include="Entity\Entities\Character.cs" />
     <Compile Include="Entity\Entities\CombatStat.cs" />
@@ -87,7 +87,7 @@
     <Compile Include="Entity\Interfaces\IBackground.cs" />
     <Compile Include="Entity\Interfaces\ICombatStat.cs" />
     <Compile Include="Entity\Interfaces\IEducation.cs" />
-    <Compile Include="Entity\Interfaces\IAttribute.cs" />
+    <Compile Include="Entity\Interfaces\ICharacterAttribute.cs" />
     <Compile Include="Entity\Interfaces\ICharacter.cs" />
     <Compile Include="Entity\Interfaces\IItem.cs" />
     <Compile Include="Entity\Interfaces\IMastery.cs" />
@@ -99,8 +99,7 @@
     <Compile Include="Entity\Interfaces\ITrait.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\IRepository.cs" />
-    <Compile Include="Repository\ReadJson.cs" />
+    <Compile Include="Repository\JsonFileHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

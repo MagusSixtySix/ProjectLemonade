@@ -15,6 +15,15 @@ namespace ProjectLemonade.Entity.Entities
         private double weight;
         private double price;
 
+        public Item(string name, ItemType type, double structurePoints, double weight, double price)
+        {
+            Name = name;
+            Type = type;
+            StructurePoints = structurePoints;
+            Weight = weight;
+            Price = price;
+        }
+
         public string Name { get => name; set => name = value; }
         public ItemType Type { get => type; set => type = value; }
         public double StructurePoints { get => structurePoints; set => structurePoints = value; }

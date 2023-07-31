@@ -12,6 +12,12 @@ namespace ProjectLemonade.Entity.Entities
         private ITrait mainTrait;
         private ITrait secondaryTrait;
 
+        public Personality(ITrait mainTrait, ITrait secondaryTrait)
+        {
+            MainTrait = mainTrait;
+            SecondaryTrait = secondaryTrait;
+        }
+
         public ITrait MainTrait { get => mainTrait; set => mainTrait = value; }
         public ITrait SecondaryTrait { get => secondaryTrait; set => secondaryTrait = value; }
     }

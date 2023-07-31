@@ -16,7 +16,7 @@ namespace ProjectLemonade.Interfaces
         int CharacterRace { get; set; }
         int CharacterClass { get; set; }
         int CharacterOrder { get; set; }
-        List<IAttribute> CharacterAttributes { get; set; }
+        List<ICharacterAttribute> CharacterAttributes { get; set; }
         List<IResource> CharacterResources { get; set; }
         List<ICombatStat> CharacterCombatStats { get; set; }
         List<int> CharacterMasteries { get; set; }

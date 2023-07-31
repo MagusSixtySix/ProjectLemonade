@@ -11,6 +11,11 @@ namespace ProjectLemonade.Entity.Entities
     {
         private string name;
 
+        public Trait(string name)
+        {
+            Name = name;
+        }
+
         public string Name { get => name; set => name = value; }
     }
 }

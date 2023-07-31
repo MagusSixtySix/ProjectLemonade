@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectLemonade.Interfaces
 {
-    public interface IAttribute
+    public interface ICharacterAttribute
     {
         string Name { get; set; }
         int MaxValue { get; set; }

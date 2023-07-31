@@ -18,9 +18,67 @@
         "CharacterClass":"5",
         "CharacterOrder":"1",
         "CharacterAttributes":
+        [
+                {"Name":"Strength",
+                "MaxValue":"20",
+                "CurrentValue":"16",
+                "ValueFromCCP":"0",
+                "ModifyCurrentValue":"0",
+                "ModifyMaxValue":"0"},
+                {"Name":"Dexterity",
+                "MaxValue":"21",
+                "CurrentValue":"18",
+                "ValueFromCCP":"0",
+                "ModifyCurrentValue":"0",
+                "ModifyMaxValue":"1"},
+                {"Name":"Intelligence",
+                "MaxValue":"18",
+                "CurrentValue":"12",
+                "ValueFromCCP":"0",
+                "ModifyCurrentValue":"0",
+                "ModifyMaxValue":"0"}
+        ],
         "CharacterResources":
+        [
+                {"Name":"HealtPoint",
+                "BaseValue":"16",
+                "ValueFromCCP":"0"},
+                {"Name":"PainPoint",
+                "BaseValue":"32",
+                "ValueFromCCP":"14"},
+                {"Name":"ManaPoint",
+                "BaseValue":"0",
+                "ValueFromCCP":"8"}
+        ],
         "CharacterCombatStats":
+        [
+                {"Name":"Initiative",
+                "BaseValue":"34",
+                "ValueFromCCP":"0"},
+                {"Name":"Attack",
+                "BaseValue":"48",
+                "ValueFromCCP":"36"},
+                {"Name":"Defense",
+                "BaseValue":"92",
+                "ValueFromCCP":"25"},
+                {"Name":"Accuracy",
+                "BaseValue":"32",
+                "ValueFromCCP":"0"}
+        ],
         "CharacterMasteries":
+        [
+                "24", "3", "17", "8", "31", "25", "2"
+        ],
         "CharacterBackgrounds":
+        [
+                "4", "7"
+        ],
         "CharacterItems":
+        [
+                {"Name":"Sword",
+                "Type":"weapon",
+                "StructurePoints":"12.6",
+                "Weight":"2.3",
+                "Price":"24.0"}
+        ]
 }]
