@@ -15,5 +15,4 @@ namespace ProjectLemonade.Entity.Entities
         public ITrait MainTrait { get => mainTrait; set => mainTrait = value; }
         public ITrait SecondaryTrait { get => secondaryTrait; set => secondaryTrait = value; }
     }
-    }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectLemonade.Interfaces;
+using ProjectLemonade.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +12,8 @@ namespace ProjectLemonade
     {
         static void Main(string[] args)
         {
+            ReadJson reader = new ReadJson();
+            List<ICharacter> characters = reader.ReadCharacters(@"../../../test.json");
         }
     }
 }

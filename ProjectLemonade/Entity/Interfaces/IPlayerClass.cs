@@ -9,6 +9,7 @@ namespace ProjectLemonade.Interfaces
     public interface IPlayerClass
     {
         string Name { get; set; }
+        int ID { get; set; }
         List<IOrder> Orders { get; set; }
     }
 }

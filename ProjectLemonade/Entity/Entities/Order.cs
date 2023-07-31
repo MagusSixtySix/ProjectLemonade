@@ -11,8 +11,10 @@ namespace ProjectLemonade.Entity.Entities
     {
         private string name;
         private List<IEducation> educations;
+        private int iD;
 
         public string Name { get => name; set => name = value; }
         public List<IEducation> Educations { get => educations; set => educations = value; }
+        public int ID { get => iD; set => iD = value; }
     }
 }

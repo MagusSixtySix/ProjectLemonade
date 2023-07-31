@@ -11,8 +11,10 @@ namespace ProjectLemonade.Entity.Entities
     {
         private string name;
         private List<IOrder> orders;
+        private int iD;
 
         public string Name { get => name; set => name = value; }
         public List<IOrder> Orders { get => orders; set => orders = value; }
+        public int ID { get => iD; set => iD = value; }
     }
 }

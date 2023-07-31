@@ -13,10 +13,12 @@ namespace ProjectLemonade.Entity.Entities
         private int[] baseMaxAttributes;
         private List<IPlayerClass> classes;
         private List<IEducation> educations;
+        private int iD;
 
         public string Name { get => name; set => name = value; }
         public int[] BaseMaxAttributes { get => baseMaxAttributes; set => baseMaxAttributes = value; }
         public List<IPlayerClass> Classes { get => classes; set => classes = value; }
         public List<IEducation> Educations { get => educations; set => educations = value; }
+        public int ID { get => iD; set => iD = value; }
     }
 }

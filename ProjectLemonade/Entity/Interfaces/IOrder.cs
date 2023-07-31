@@ -9,6 +9,7 @@ namespace ProjectLemonade.Interfaces
     public interface IOrder
     {
         string Name { get; set; }
+        int ID { get; set; }
         List<IEducation> Educations { get; set; }
     }
 }

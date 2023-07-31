@@ -9,6 +9,7 @@ namespace ProjectLemonade.Interfaces
     public interface IBackground
     {
         string Name { get; set; }
+        int ID { get; set; }
         int CCPCost { get; set; }
     }
 }

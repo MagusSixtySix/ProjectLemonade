@@ -11,8 +11,10 @@ namespace ProjectLemonade.Entity.Entities
     {
         private string name;
         private int cCPCost;
+        private int iD;
 
         public string Name { get => name; set => name = value; }
         public int CCPCost { get => cCPCost; set => cCPCost = value; }
+        public int ID { get => iD; set => iD = value; }
     }
 }

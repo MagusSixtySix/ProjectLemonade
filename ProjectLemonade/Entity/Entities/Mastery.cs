@@ -20,6 +20,7 @@ namespace ProjectLemonade.Entity.Entities
         private List<IMastery> weakPrerequisites;
         private List<IAttribute> requiredAttributes;
         private int masteryLevel;
+        private int iD;
 
         public string Name { get => name; set => name = value; }
         public int CCPCostLvl1 { get => cCPCostLvl1; set => cCPCostLvl1 = value; }
@@ -32,5 +33,6 @@ namespace ProjectLemonade.Entity.Entities
         public List<IMastery> WeakPrerequisites { get => weakPrerequisites; set => weakPrerequisites = value; }
         public List<IAttribute> RequiredAttributes { get => requiredAttributes; set => requiredAttributes = value; }
         public int MasteryLevel { get => masteryLevel; set => masteryLevel = value; }
+        public int ID { get => iD; set => iD = value; }
     }
 }

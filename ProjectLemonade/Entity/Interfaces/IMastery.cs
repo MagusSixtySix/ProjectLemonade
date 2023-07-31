@@ -9,6 +9,7 @@ namespace ProjectLemonade.Interfaces
     public interface IMastery
     {
         string Name { get; set; }
+        int ID { get; set; }
         int CCPCostLvl1 { get; set; }
         int CCPCostLvl2 { get; set; }
         int CCPCostLvl3 { get; set; }

@@ -1,0 +1,26 @@
+[{	
+	"CharacterName":"TestSubject",
+        "CharacterLevel":"1",
+        "CharacterCreationPoints":"45",
+        "CharacterReligion":"TestReligion",
+        "CharacterPersonality":
+	[
+		{"MainTrait":
+		[
+                        {"Name":"TestTrait1"}
+                ],
+                "SecondaryTrait":
+                [
+                        {"Name":"TestTrait2"}
+                ]}
+        ],
+        "CharacterRace":"3",
+        "CharacterClass":"5",
+        "CharacterOrder":"1",
+        "CharacterAttributes":
+        "CharacterResources":
+        "CharacterCombatStats":
+        "CharacterMasteries":
+        "CharacterBackgrounds":
+        "CharacterItems":
+}]
