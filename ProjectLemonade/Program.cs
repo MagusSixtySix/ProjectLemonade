@@ -20,8 +20,9 @@ namespace ProjectLemonade
                 new CombatStat("Defense", 125, 14), new CombatStat("Accuracy", 25, 14)}, new List<int> { 1, 2, 3, 4, 5, 6, }, new List<int> { 2, 5, 6 }, 
                 new List<IItem> { new Item("Sword", ItemType.weapon, 32.4, 2.0, 3.45)});
 
-            JsonFileHandler.WriteJsonObject(testSubject, "testcharacter.json");*/
-            Character test = (Character)JsonFileHandler.ReadJsonObject(@"testcharacter.json");
+            JsonFileHandler.SaveCharacterToJson(testSubject);*/
+
+            Character test = (Character)JsonFileHandler.ReadJsonToObject(@JsonFileHandler.GetCharacterFileName("TestSubject"));
         }
     }
 }
