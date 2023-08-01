@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 
 namespace ProjectLemonade.Repository
@@ -15,18 +14,15 @@ namespace ProjectLemonade.Repository
     {
         public static Object ReadJsonObject(string filePath)
         {
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-            var json = File.ReadAllText(filePath);
-            Object characters = JsonSerializer.Deserialize<Object>(json, options);
+            StreamReader reader = new StreamReader(filePath);
+            var json = reader.ReadToEnd();
+            Object characters = JsonConvert.DeserializeObject<Object>(json, new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All });
             return characters;
         }
 
         public static void WriteJsonObject(Object obj, string fileName)
         {
-            var jsonString = JsonSerializer.Serialize(obj);
+            var jsonString = JsonConvert.SerializeObject(obj, Formatting.Indented, new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All });
             File.WriteAllText(fileName, jsonString);
         }
     }
