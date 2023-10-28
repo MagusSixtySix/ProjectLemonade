@@ -8,7 +8,7 @@ namespace ProjectLemonade.Interfaces
 {
     public interface IEducation
     {
-        IMastery Mastery { get; set; }
+        int Mastery { get; set; }
         int EducationLevel { get; set; }
     }
 }

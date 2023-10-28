@@ -1,4 +1,5 @@
 ﻿using ProjectLemonade.Interfaces;
+using ProjectLemonade.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace ProjectLemonade.Entity.Entities
         private List<ICharacterAttribute> characterAttributes;
         private List<IResource> characterResources;
         private List<ICombatStat> characterCombatStats;
-        private List<int> characterMasteries;
+        private List<ICharacterMasteries> characterMasteries;
         private List<int> characterBackgrounds;
         private List<IItem> characterItems;
 
@@ -28,7 +29,7 @@ namespace ProjectLemonade.Entity.Entities
             string characterReligion, IPersonality characterPersonality, int characterRace,
             int characterClass, int characterOrder, List<ICharacterAttribute> characterAttributes,
             List<IResource> characterResources, List<ICombatStat> characterCombatStats,
-            List<int> characterMasteries, List<int> characterBackgrounds, List<IItem> characterItems)
+            List<ICharacterMasteries> characterMasteries, List<int> characterBackgrounds, List<IItem> characterItems)
         {
             CharacterName = characterName;
             CharacterLevel = characterLevel;
@@ -61,7 +62,7 @@ namespace ProjectLemonade.Entity.Entities
         public List<ICharacterAttribute> CharacterAttributes { get => characterAttributes; set => characterAttributes = value; }
         public List<IResource> CharacterResources { get => characterResources; set => characterResources = value; }
         public List<ICombatStat> CharacterCombatStats { get => characterCombatStats; set => characterCombatStats = value; }
-        public List<int> CharacterMasteries { get => characterMasteries; set => characterMasteries = value; }
+        public List<ICharacterMasteries> CharacterMasteries { get => characterMasteries; set => characterMasteries = value; }
         public List<int> CharacterBackgrounds { get => characterBackgrounds; set => characterBackgrounds = value; }
         public List<IItem> CharacterItems { get => characterItems; set => characterItems = value; }
     }

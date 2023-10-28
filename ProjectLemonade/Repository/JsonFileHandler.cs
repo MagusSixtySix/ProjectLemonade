@@ -12,32 +12,16 @@ namespace ProjectLemonade.Repository
 {
     static class JsonFileHandler
     {
-        public static Object ReadJsonToObject(string filePath)
+        public static object ReadJsonToObject(string filePath)
         {
             StreamReader reader = new StreamReader(filePath);
             var json = reader.ReadToEnd();
-            Object jsonObject = JsonConvert.DeserializeObject<Object>(json,
+            object jsonObject = JsonConvert.DeserializeObject<object>(json,
                 new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All });
             return jsonObject;
         }
 
-        public static List<Object> ReadJsonToList(string filePath) 
-        {
-            StreamReader reader = new StreamReader(filePath);
-            var json = reader.ReadToEnd();
-            List<Object> jsonList = JsonConvert.DeserializeObject<List<Object>>(json,
-                new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All });
-            return jsonList;
-        }
-
-        public static void WriteJsonFromObject(Object obj, string fileName)
-        {
-            var jsonString = JsonConvert.SerializeObject(obj, Formatting.Indented,
-                new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All });
-            File.WriteAllText(fileName, jsonString);
-        }
-
-        public static void WriteJsonFromList(List<Object> list, string fileName)
+        public static void WriteJsonFromObject(object obj, string fileName)
         {
             var jsonString = JsonConvert.SerializeObject(obj, Formatting.Indented,
                 new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All });
@@ -46,14 +30,18 @@ namespace ProjectLemonade.Repository
 
         public static void SaveCharacterToJson(Character character)
         {
-            var jsonString = JsonConvert.SerializeObject(character, Formatting.Indented,
-                new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All });
-            File.WriteAllText((character.CharacterName + ".json"), jsonString);
+            WriteJsonFromObject(character, character.CharacterName + ".json");
         }
 
         public static string GetCharacterFileName(string characterName) 
         {
             return (characterName + ".json");
+        }
+
+        public static List<T> GetListFromFile<T>(string filename)
+        {
+            List<T> list = (List<T>)JsonFileHandler.ReadJsonToObject(@filename + ".json");
+            return list;
         }
     }
 }

@@ -10,6 +10,8 @@ namespace ProjectLemonade.Interfaces
     {
         string Name { get; set; }
         int ID { get; set; }
+        int Background { get; set; }
+        List<int> FreeBackgrounds { get; set; }
         List<IEducation> Educations { get; set; }
     }
 }

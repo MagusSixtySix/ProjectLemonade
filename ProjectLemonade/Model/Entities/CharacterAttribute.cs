@@ -1,4 +1,6 @@
 ﻿using ProjectLemonade.Interfaces;
+using ProjectLemonade.Model.Entities;
+using ProjectLemonade.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,28 +11,27 @@ namespace ProjectLemonade.Entity.Entities
 {
     internal class CharacterAttribute : ICharacterAttribute
     {
-        private string name;
+        private IBaseAttribute attribute;
         private int maxValue;
-        private int currentValue;
-        private int valueFromCCP;
-        private int modifyCurrentValue;
+        private int valueAtLvl1;
+        private int modifyValue;
         private int modifyMaxValue;
 
-        public CharacterAttribute(string name, int maxValue, int currentValue, int valueFromCCP, int modifyCurrentValue, int modifyMaxValue)
+        public CharacterAttribute(IBaseAttribute attribute, int maxValue, int valueAtLvl1, int modifyValue, int modifyMaxValue)
         {
-            Name = name;
+            Attribute = attribute;
             MaxValue = maxValue;
-            CurrentValue = currentValue;
-            ValueFromCCP = valueFromCCP;
-            ModifyCurrentValue = modifyCurrentValue;
+            ValueAtLvl1 = valueAtLvl1;
+            ModifyValue = modifyValue;
             ModifyMaxValue = modifyMaxValue;
         }
 
-        public string Name { get => name; set => name = value; }
+        public IBaseAttribute Attribute { get => attribute; set => attribute = value; }
         public int MaxValue { get => maxValue; set => maxValue = value; }
-        public int CurrentValue { get => currentValue; set => currentValue = value; }
-        public int ValueFromCCP { get => valueFromCCP; set => valueFromCCP = value; }
-        public int ModifyCurrentValue { get => modifyCurrentValue; set => modifyCurrentValue = value; }
+        public int ValueAtLvl1 { get => valueAtLvl1; set => valueAtLvl1 = value; }
+        public int ModifyValue { get => modifyValue; set => modifyValue = value; }
         public int ModifyMaxValue { get => modifyMaxValue; set => modifyMaxValue = value; }
+        public int GetCurrentValue() { return ValueAtLvl1 +  ModifyValue; }
+        public int GetCurrentMaxValue() { return MaxValue + ModifyMaxValue; }
     }   
 }

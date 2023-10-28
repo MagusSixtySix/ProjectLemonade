@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectLemonade.Interfaces
+namespace ProjectLemonade.Model.Interfaces
 {
-    public interface ITrait
+    public interface IRaceBaseAttribute
     {
-        string Name { get; set; }
         int ID { get; set; }
+
+        int MaxLevel { get; set; }
     }
 }

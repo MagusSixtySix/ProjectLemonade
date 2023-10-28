@@ -9,10 +9,16 @@ namespace ProjectLemonade.Entity.Entities
 {
     internal class Education : IEducation
     {
-        private IMastery mastery;
+        private int mastery;
         private int educationLevel;
 
-        public IMastery Mastery { get => mastery; set => mastery = value; }
+        public Education(int mastery, int educationLevel) 
+        {
+            Mastery = mastery;
+            EducationLevel = educationLevel;
+        }
+
+        public int Mastery { get => mastery; set => mastery = value; }
         public int EducationLevel { get => educationLevel; set => educationLevel = value; }
     }
 }

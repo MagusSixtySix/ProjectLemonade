@@ -10,6 +10,6 @@ namespace ProjectLemonade.Interfaces
     {
         string Name { get; set; }
         int ID { get; set; }
-        List<IOrder> Orders { get; set; }
+        List<int> Orders { get; set; }
     }
 }

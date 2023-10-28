@@ -1,4 +1,5 @@
 ﻿using ProjectLemonade.Entity.Entities;
+using ProjectLemonade.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace ProjectLemonade.Interfaces
         List<ICharacterAttribute> CharacterAttributes { get; set; }
         List<IResource> CharacterResources { get; set; }
         List<ICombatStat> CharacterCombatStats { get; set; }
-        List<int> CharacterMasteries { get; set; }
+        List<ICharacterMasteries> CharacterMasteries { get; set; }
         List<int> CharacterBackgrounds { get; set; }
         List<IItem> CharacterItems { get; set; }
     }

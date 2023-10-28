@@ -9,7 +9,10 @@ namespace ProjectLemonade.Interfaces
     public interface ICombatStat
     {
         string Name { get; set; }
+        int ID { get; set; }
         int BaseValue { get; set; }
         int ValueFromCCP { get; set; }
+
+        int GetValue();
     }
 }

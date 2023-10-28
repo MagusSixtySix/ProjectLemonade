@@ -4,15 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectLemonade.Interfaces
+namespace ProjectLemonade.Model.Interfaces
 {
-    public interface IResource
+    public interface IBaseAttribute
     {
         string Name { get; set; }
         int ID { get; set; }
-        int BaseValue { get; set; }
-        int ValueFromCCP { get; set; }
-
-        int GetValue();
     }
 }

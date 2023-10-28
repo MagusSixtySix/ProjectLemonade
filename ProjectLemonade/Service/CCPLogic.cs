@@ -11,22 +11,27 @@ using ProjectLemonade.Model.Entities;
 
 namespace ProjectLemonade.Service
 {
-    static internal class CCPLogic
+    public static class CCPLogic
     {
         static int maxCCP = 50;
         public static int GetCCP(ICharacter character)
         {
-            return (maxCCP - GetSpentCCPOnBackgrounds(character)) * character.CharacterLevel + 
-                character.CharacterAttributes.Find(x => x.Name == "Intelligence").CurrentValue; //current value nem jó! a LVL 1-es valuenak kell lennie!
+            return (maxCCP - GetSpentCCPOnBackgrounds(character)) * character.CharacterLevel +
+                character.CharacterAttributes.Find(x => x.Attribute.ID == 8).ValueAtLvl1;
         }
 
         public static int GetSpentCCPOnBackgrounds(ICharacter character)
         {
             int sumOfSpentCCP = 0;
-            BackgroundList backgrounds = (BackgroundList)JsonFileHandler.ReadJsonToObject(@"backgrounds.json");
+            List<IBackground> backgrounds = JsonFileHandler.GetListFromFile<IBackground>("backgrounds");
+            List<int> freebackgrounds = OrderLogic.GetCharacterOrder(character).FreeBackgrounds;
+
             foreach (var item in character.CharacterBackgrounds)
             {
-                sumOfSpentCCP += backgrounds.Backgrounds.Find(x => x.ID == item).CCPCost;
+                if (!freebackgrounds.Contains(item))
+                {
+                    sumOfSpentCCP += backgrounds.Find(x => x.ID == item).CCPCost;
+                }
             }
             return sumOfSpentCCP;
         }
