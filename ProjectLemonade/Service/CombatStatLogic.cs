@@ -16,7 +16,7 @@ namespace ProjectLemonade.Service
         {
             List<ICombatStat> combatStats = JsonFileHandler.GetListFromFile<ICombatStat>("combatstats");
 
-            character.CharacterCombatStats.Clear();
+            character.CharacterCombatStats = new List<ICombatStat>();
 
             foreach (var item in combatStats)
             {

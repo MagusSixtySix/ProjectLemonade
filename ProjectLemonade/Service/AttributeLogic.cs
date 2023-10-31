@@ -18,7 +18,7 @@ namespace ProjectLemonade.Service
             List<IRace> races = JsonFileHandler.GetListFromFile<IRace>("races");
             List<IBaseAttribute> baseAttributes = JsonFileHandler.GetListFromFile<IBaseAttribute>("attributes");
 
-            character.CharacterAttributes.Clear();
+            character.CharacterAttributes = new List<ICharacterAttribute>();
 
             foreach (var item in baseAttributes)
             {

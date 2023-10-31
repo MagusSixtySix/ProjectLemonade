@@ -23,6 +23,7 @@ namespace ProjectLemonade.Service
                 character.CharacterCreationPoints -= costOfLevelUp;
                 increasedMasteryIDs.AddRange(LevelUpMastery(masteryID, character));
             }
+            RemoveLvl0Masteries(character);
             return increasedMasteryIDs;
         }
         private static List<int> LevelUpMastery(int masteryID, ICharacter character)
@@ -101,61 +102,23 @@ namespace ProjectLemonade.Service
         {
             
             int educationLevel = EducationLogic.GetEducationLevel(masteryID, character);
-            if (educationLevel > 0 && educationLevel <= 3) { return CostModifiedByEducation(1, masteryID, educationLevel, character); }
-            else if (educationLevel == 4) { return CostModifiedByEducation(2, masteryID, educationLevel, character); }
-            else if (educationLevel == 5) { return CostModifiedByEducation(3, masteryID, educationLevel, character); }
-            else return CostModifiedByEducation(0, masteryID, educationLevel, character);
+            int educationBonus = GetEducationBonus(educationLevel);
+            return CostModifiedByEducation(educationBonus, masteryID, educationLevel, character);
         }
 
         private static int CostModifiedByEducation(int educationBonus,int masteryID, int educationLevel, ICharacter character)
         {
             IMastery mastery = GetMastery(masteryID);
-            int currentLevel = character.CharacterMasteries.Find(x => x.ID == masteryID).Level;
+            int targetLevel = character.CharacterMasteries.Find(x => x.ID == masteryID).Level + 1;
 
-            switch (currentLevel + 1)
+            if (educationLevel >= targetLevel)
             {
-                case 1:
-                    if (educationLevel >= currentLevel + 1)
-                    {
-                        if (mastery.CCPCostLvl1 - educationBonus <= 1) { return 1; }
-                        else { return mastery.CCPCostLvl1 - educationBonus; }
-                    }
-                    else { return mastery.CCPCostLvl1; }
-                case 2:
-                    if (educationLevel >= currentLevel + 1)
-                    {
-                        if (mastery.CCPCostLvl2 - mastery.CCPCostLvl1 - educationBonus <= 1) { return 1; }
-                        else { return mastery.CCPCostLvl2 - mastery.CCPCostLvl1 - educationBonus; }
-                    }
-                    else { return mastery.CCPCostLvl2 - mastery.CCPCostLvl1; }
-                case 3:
-                    if (educationLevel >= currentLevel + 1)
-                    {
-                        if (mastery.CCPCostLvl3 - mastery.CCPCostLvl2 - educationBonus <= 1) { return 1; }
-                        else { return mastery.CCPCostLvl3 - mastery.CCPCostLvl2 - educationBonus; }
-                    }
-                    else { return mastery.CCPCostLvl3 - mastery.CCPCostLvl2; }
-                case 4:
-                    if (educationLevel >= currentLevel + 1)
-                    {
-                        if (mastery.CCPCostLvl4 - mastery.CCPCostLvl3 - educationBonus <= 1) { return 1; }
-                        else { return mastery.CCPCostLvl4 - mastery.CCPCostLvl3 - educationBonus; }
-                    }
-                    else { return mastery.CCPCostLvl4 - mastery.CCPCostLvl3; }
-                case 5:
-                    if (educationLevel >= currentLevel + 1)
-                    {
-                        if (mastery.CCPCostLvl5 - mastery.CCPCostLvl4 - educationBonus <= 1) { return 1; }
-                        else { return mastery.CCPCostLvl5 - mastery.CCPCostLvl4 - educationBonus; }
-                    }
-                    else { return mastery.CCPCostLvl5 - mastery.CCPCostLvl4; }
-                default: return 0;
-            }
-        }
+                int costModifiedByEducation = GetCCPCost(targetLevel, mastery.Difficulity) - educationBonus;
 
-        private static IMastery GetMastery(int masteryID)
-        {
-            return JsonFileHandler.GetListFromFile<IMastery>("masteries").Find(x => x.ID == masteryID);
+                if ( costModifiedByEducation <= 1) { return 1; }
+                else { return costModifiedByEducation; }
+            }
+            else { return GetCCPCost(targetLevel, mastery.Difficulity); }
         }
 
         public static void DecreaseMastery(List<int> list, ICharacter character)
@@ -165,16 +128,82 @@ namespace ProjectLemonade.Service
             foreach (var item in list)
             {
                 IMastery mastery = masteryList.Find(x => x.ID == item);
-                switch (character.CharacterMasteries.Find(x => x.ID == item).Level)
+                int currentLevel = character.CharacterMasteries.Find(x => x.ID == item).Level;
+                int educationLevel = EducationLogic.GetEducationLevel(item, character);
+                int educationBonus = GetEducationBonus(educationLevel);
+
+                if (educationLevel >= currentLevel)
                 {
-                    case 1: { character.CharacterCreationPoints += mastery.CCPCostLvl1; break; }
-                    case 2: { character.CharacterCreationPoints += mastery.CCPCostLvl2 - mastery.CCPCostLvl1; break; }
-                    case 3: { character.CharacterCreationPoints += mastery.CCPCostLvl3 - mastery.CCPCostLvl2; break; }
-                    case 4: { character.CharacterCreationPoints += mastery.CCPCostLvl4 - mastery.CCPCostLvl3; break; }
-                    case 5: { character.CharacterCreationPoints += mastery.CCPCostLvl5 - mastery.CCPCostLvl4; break; }
+                    character.CharacterCreationPoints += GetCCPCost(currentLevel, mastery.Difficulity)-educationBonus;
+                }else
+                {
+                    character.CharacterCreationPoints += GetCCPCost(currentLevel, mastery.Difficulity);
                 }
                 character.CharacterMasteries.Find(x => x.ID == item).Level -= 1;
+                RemoveLvl0Masteries(character);
             }
+        }
+        private static int GetEducationBonus(int educationLevel)
+        {
+            if (educationLevel > 0 && educationLevel <= 3) { return 1; }
+            else if (educationLevel == 4) { return 2; }
+            else if (educationLevel == 5) { return 3; }
+            else return 0;
+        }
+        private static int GetCCPCost(int masteryLevel, int difficulity)
+        {
+            switch (difficulity)
+            {
+                case 1:
+                    switch (masteryLevel)
+                    {
+                        case 1: return 1;
+                        case 2: return 2;
+                        case 3: return 5;
+                        case 4: return 7;
+                        case 5: return 10;
+                        default: return 0;
+                    }
+                case 2:
+                    switch (masteryLevel)
+                    {
+                        case 1: return 1;
+                        case 2: return 4;
+                        case 3: return 5;
+                        case 4: return 10;
+                        case 5: return 10;
+                        default: return 0;
+                    }
+                case 3:
+                    switch (masteryLevel)
+                    {
+                        case 1: return 2;
+                        case 2: return 6;
+                        case 3: return 7;
+                        case 4: return 15;
+                        case 5: return 15;
+                        default: return 0;
+                    }
+                case 4:
+                    switch (masteryLevel)
+                    {
+                        case 1: return 3;
+                        case 2: return 7;
+                        case 3: return 10;
+                        case 4: return 15;
+                        case 5: return 20;
+                        default: return 0;
+                    }
+                default: return 0;
+            }
+        }
+        private static IMastery GetMastery(int masteryID)
+        {
+            return JsonFileHandler.GetListFromFile<IMastery>("masteries").Find(x => x.ID == masteryID);
+        }
+        private static void RemoveLvl0Masteries(ICharacter character)
+        {
+            character.CharacterMasteries.RemoveAll(x => x.Level == 0);
         }
     }
 }

@@ -11,11 +11,6 @@ namespace ProjectLemonade.Interfaces
     {
         string Name { get; set; }
         int ID { get; set; }
-        int CCPCostLvl1 { get; set; }
-        int CCPCostLvl2 { get; set; }
-        int CCPCostLvl3 { get; set; }
-        int CCPCostLvl4 { get; set; }
-        int CCPCostLvl5 { get; set; }
         int Difficulity { get; set; }
         List<int> StrongPrerequisites { get; set; }
         List<int> WeakPrerequisites { get; set; }

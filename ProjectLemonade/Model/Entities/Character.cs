@@ -25,6 +25,27 @@ namespace ProjectLemonade.Entity.Entities
         private List<int> characterBackgrounds;
         private List<IItem> characterItems;
 
+        public Character() { }
+
+        public Character(string characterName, string characterReligion, int characterRace, 
+            int characterClass, int characterOrder)
+        {
+            CharacterName = characterName;
+            CharacterLevel = 1;
+            CharacterCreationPoints = 0;
+            CharacterReligion = characterReligion;
+            CharacterPersonality = null;
+            CharacterRace = characterRace;
+            CharacterClass = characterClass;
+            CharacterOrder = characterOrder;
+            CharacterAttributes = null;
+            CharacterResources = null;
+            CharacterCombatStats = null;
+            CharacterMasteries = null;
+            characterBackgrounds = null;
+            characterItems = null;
+        }
+
         public Character(string characterName, int characterLevel, int characterCreationPoints,
             string characterReligion, IPersonality characterPersonality, int characterRace,
             int characterClass, int characterOrder, List<ICharacterAttribute> characterAttributes,
@@ -45,10 +66,6 @@ namespace ProjectLemonade.Entity.Entities
             CharacterMasteries = characterMasteries;
             CharacterBackgrounds = characterBackgrounds;
             CharacterItems = characterItems;
-        }
-
-        public Character()
-        {
         }
 
         public string CharacterName { get => characterName; set => characterName = value; }

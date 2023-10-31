@@ -14,7 +14,7 @@ namespace ProjectLemonade.Service
         {
             List<IResource> resources = JsonFileHandler.GetListFromFile<IResource>("resources");
 
-            character.CharacterResources.Clear();
+            character.CharacterResources = new List<IResource>();
 
             foreach (var item in resources)
             {
